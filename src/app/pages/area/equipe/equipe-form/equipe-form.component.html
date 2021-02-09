@@ -1,0 +1,50 @@
+<section class="content">
+        
+    <div class="col-md-12">
+        
+        <form [formGroup]="formCad">
+
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ title }}</h3>
+                    <div class="box-tools">
+                        <a [routerLink]="[]" class="btn btn-success" (click)="voltar()" >
+                            <i class="fa fa-mail-reply"></i> Voltar
+                        </a>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    
+                    <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                        <label for="descricao">Nome / Equipe</label>
+                        <input class="form-control" placeholder="Nome" formControlName="name" >
+                    </app-input>
+
+                    
+
+                    <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                        <label for="ordem">Ordem</label>
+                        <input type="number" min="0" class="form-control" placeholder="Ordem" formControlName="order_item"/>
+                    </app-input>
+
+                    <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                        <label for="minimo">Pai</label>
+                        <select  formControlName="parent_id"  class="form-control">
+                            <option *ngFor="let item of items" [value]="item.id">{{ item.name }}</option>
+                        </select>
+                    </app-input>
+
+                </div>
+
+                <div class="box-footer clearfix">
+                    <button class="btn btn-primary" (click)="salvar()" [disabled]="formCad.invalid"> <i class="fa fa-save"></i> Salvar</button>
+                </div>
+
+
+            </div>
+        </form>    
+
+    </div>
+
+</section>

@@ -1,0 +1,20 @@
+<div class="">
+
+    
+    <app-header *ngIf="verifySession()"></app-header>
+    
+    <app-menu *ngIf="verifySession()"></app-menu>
+    
+    <div class="content-wrapper" *ngIf="verifySession(); else login">
+        <router-outlet></router-outlet>
+    </div>
+
+    <ng-template #login>
+        <router-outlet></router-outlet>
+    </ng-template>
+    
+    
+
+    <app-snackbar></app-snackbar>
+
+</div>

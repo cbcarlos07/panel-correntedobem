@@ -1,0 +1,55 @@
+<section class="content">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Pessoas que entraram em contato</h3>
+                <div class="row"></div>
+               
+
+                <div class="box-tools">
+                    
+                </div>
+            </div>
+            
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-hover" >
+                    <thead>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Mensagem</th>
+                        <th style="width: 80px">Ação</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let obj of items">
+                            <td>{{ obj.name }}</td>
+                            <td>{{ obj.email }}</td>
+                            <td>{{ obj.message | slice:0:10 }} ...</td>
+                            <td>
+                                <a [routerLink]="['/contato/view', obj.id]" title="Visualizar" >
+                                    <i class="fa  fa-eye"></i>
+                                </a>
+                                &nbsp;
+                                <a [routerLink]="[]" title="Reenviar" (click)="perguntaRemover( obj )">
+                                    <i class="fa  fa-reply text-danger"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              
+            </div>
+        </div>
+        <!-- /.box -->
+
+        
+        
+        
+        <!-- /.col -->
+    </div>
+</section>
+<!-- content -->

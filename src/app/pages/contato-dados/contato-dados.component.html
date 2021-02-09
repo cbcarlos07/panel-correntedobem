@@ -1,0 +1,49 @@
+<section class="content">
+        
+    <div class="col-md-12">
+        
+        <form [formGroup]="formCad" (ngSubmit)="submit()">
+
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ title }}</h3>
+                </div>
+
+                <div class="box-body">
+                    <div class="col-md-6">
+
+                        <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                            <label for="minimo">Email</label>
+                            <input  type="email" class="form-control" formControlName="email" placeholder="email@email.com" >
+                        </app-input>
+
+                        <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                            <label for="minimo">Telefone</label>
+                            <input class="form-control" formControlName="telefone" placeholder="92 9999-9999" >
+                        </app-input> 
+    
+                        <app-input [showTip]="false">
+                            <label for="observacao">Endereço</label>
+                            <textarea class="form-control" formControlName="endereco" rows="5"></textarea>
+                        </app-input>
+    
+                        
+    
+    
+                                          
+
+                    </div>
+
+                </div>
+
+                <div class="box-footer clearfix">
+                    <button class="btn btn-primary" type="submit" [disabled]="formCad.invalid"> <i class="fa fa-save"></i> Salvar</button>
+                </div>
+
+
+            </div>
+        </form>    
+
+    </div>
+
+</section>

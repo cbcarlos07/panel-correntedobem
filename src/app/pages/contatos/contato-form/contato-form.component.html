@@ -1,0 +1,65 @@
+<section class="content">
+        
+    <div class="col-md-12">        
+        <form [formGroup]="formCad" (ngSubmit)="reenviar()">
+
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ title }}</h3>
+                    <div class="box-tools">
+                        <a [routerLink]="[]" class="btn btn-success" (click)="voltar()" >
+                            <i class="fa fa-mail-reply"></i> Voltar
+                        </a>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    
+                    <div class="col-md-6">
+
+                        
+                        <div class="col-md-12 form-group">
+                            <app-input [showTip]="false">
+                                <label for="observacao">Nome</label>
+                                <input class="form-control" formControlName="name" />
+                            </app-input>
+                        
+                        </div>
+                    
+                        <div class="col-md-12">
+                            <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                                <label for="minimo">E-mail</label>
+                                <input class="form-control" formControlName="email">
+                            </app-input>
+                        
+                        </div>
+
+                        <div class="col-md-12">
+                            <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                                <label for="minimo">Mensagem</label>
+                                <textarea class="form-control" formControlName="message" rows="10"></textarea>
+                            </app-input>
+                        
+                        </div>
+                        
+
+                    </div>
+                </div>
+
+                <div class="box-footer clearfix">
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary" > 
+                                <i  class="fa fa-send" *ngIf="!loadgin"></i>
+                                <i  class="fa fa-spinner fa-spin" *ngIf="loadgin"></i> Reenviar</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </form>    
+
+    </div>
+
+</section>

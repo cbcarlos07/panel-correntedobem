@@ -1,0 +1,56 @@
+<section class="content">
+        
+    <div class="col-md-12">
+        
+        <form [formGroup]="formCad" (ngSubmit)="submit()">
+
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ title }}</h3>
+                </div>
+
+                <div class="box-body">
+
+                    <app-input [showTip]="false">
+                        <label for="observacao">Descrição</label>
+                        <textarea class="form-control" formControlName="description" rows="10"></textarea>
+                    </app-input>
+                    
+
+                    
+
+                    <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                        <label for="minimo">Logo</label>
+                        <input type="file"  formControlName="logo" (change)="fileChangeEventLogo($event)" accept="image/x-png,image/gif,image/jpeg">
+                    </app-input>
+
+                    <div class="col-md-12">
+                        <img [src]="imgLogo" *ngIf="imgLogo" width="250">
+                    </div>
+                
+
+                    <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                        <label for="minimo">Imagem</label>
+                        <input type="file"  formControlName="image" (change)="fileChangeEventImg($event)" accept="image/x-png,image/gif,image/jpeg">
+                    </app-input>
+
+                    <div class="col-md-12">
+                        <img [src]="imgImage" *ngIf="imgImage" width="250">
+                    </div>
+
+
+                   
+
+                </div>
+
+                <div class="box-footer clearfix">
+                    <button class="btn btn-primary" type="submit" [disabled]="formCad.invalid"> <i class="fa fa-save"></i> Salvar</button>
+                </div>
+
+
+            </div>
+        </form>    
+
+    </div>
+
+</section>

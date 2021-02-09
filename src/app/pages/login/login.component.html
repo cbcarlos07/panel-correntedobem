@@ -1,0 +1,55 @@
+
+    <div class="login-box">
+        <div class="login-logo">
+          <a [routerLink]="['']"> 
+            <img src="assets/correntedobem.png"  width="250">
+          </a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+          <p class="login-box-msg"></p>
+      
+          <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+            <div style="text-align: center" *ngIf="isError">
+                <span class="help-block has-error" >
+                        <div style="text-align: center">
+                            <span class="help-block has-error" >
+                                <strong>{{ msgError }}</strong>
+                            </span>
+                        </div> 
+                </span>
+            </div>
+
+            <div class="input-group form-group has-feedback">
+              <input type="email" class="form-control" placeholder="Email" formControlName="email">
+              <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+            </div>
+
+            <div class="input-group form-group has-feedback">
+              <input [type]="type" class="form-control" placeholder="Password" formControlName="password">
+              <span class="input-group-addon " (click)="changeType()">
+                  <i class="glyphicon glyphicon-lock"></i>
+              </span>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-logar btn-block btn-flat">Efetua Login</button>
+                  </div>
+            </div>
+          </form>
+      
+          <div class="social-auth-links text-center">
+            
+            
+          </div>
+          <!-- /.social-auth-links -->
+          <!-- <div class="col-md-6 col-sm-6">
+              <a href="#">Esqueci a senha</a><br>
+          </div> -->
+          <!-- <div class="col-md-6 col-sm-6">
+              <a [routerLink]="['/subscribe']" class="text-center pull-right">Cadastre-se</a>
+          </div> -->
+      
+        </div>
+        <!-- /.login-box-body -->
+      </div>

@@ -1,0 +1,8 @@
+.main-sidebar{
+    overflow:hidden !important; 
+    position:absolute !important;
+    
+}
+[hidden]{
+    display: none;
+}
