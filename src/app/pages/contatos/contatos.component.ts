@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContatoService } from 'src/app/service/contato.service';
+import { NotificationService } from 'src/app/service/notification.service';
 
 @Component({
   selector: 'app-contatos',
@@ -8,7 +9,9 @@ import { ContatoService } from 'src/app/service/contato.service';
 })
 export class ContatosComponent implements OnInit {
 	items = []
-    constructor(private _contatoService: ContatoService) { }
+    constructor(private _contatoService: ContatoService,
+				private _notificationService: NotificationService
+		) { }
 
     ngOnInit() {
 		this.get()
@@ -19,6 +22,20 @@ export class ContatosComponent implements OnInit {
 			.getAll()
 			.subscribe((response: any)=>{
 				this.items = response
+			})
+	}
+
+	reenviar(obj: any){
+		console.log('reenviar',obj);
+		
+		this._contatoService
+			.reenviar(obj.id)
+			.subscribe((response: any)=>{
+				let obj = {
+					message: 'Reenviado com sucesso',
+					status: true
+				}
+				this._notificationService.notify(obj)
 			})
 	}
 
