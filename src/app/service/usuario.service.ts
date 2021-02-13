@@ -79,6 +79,7 @@ export class UsuarioService {
 	}
 
 	setToken( token ){
+
 		localStorage.setItem('token', token)
 	}
 

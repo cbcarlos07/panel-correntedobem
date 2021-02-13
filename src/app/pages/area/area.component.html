@@ -22,7 +22,7 @@
                         <th>URL</th>                          
                         <th>Ícone</th>                          
                         <th>Pai</th>                          
-                        <th style="width: 80px">Ação</th>
+                        <th style="width: 100px">Ação</th>
                     </thead>
                     <tbody>
                         <tr *ngFor="let obj of items">
@@ -45,6 +45,10 @@
                                 &nbsp;
                                 <a [routerLink]="['/area/equipe', obj.id]" title="Equipe" >
                                     <i class="fa  fa-bars text-danger"></i>
+                                </a>
+                                &nbsp;
+                                <a [routerLink]="['/area/foto', obj.id]" title="Adicionar fotos" >
+                                    <i class="fa   fa-file-image-o text-success"></i>
                                 </a>
                               
                             </td>

@@ -26,6 +26,10 @@ export class AreaComponent implements OnInit {
 			.get()
 			.subscribe((response: any) => {
 				this.items = response
+			},error => {
+				if( error.status == 403 ){
+					this._userService.sair()
+				}
 				
 			})
 	}

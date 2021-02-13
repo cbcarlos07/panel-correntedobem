@@ -24,13 +24,24 @@
 
                     
 
-                    <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                    <div class="form-group">
                         <label for="minimo">Logo</label>
-                        <input type="file"  formControlName="img" (change)="fileChangeEventLogo($event)" accept="image/x-png,image/gif,image/jpeg">
-                    </app-input>
+                        <input type="file"   (change)="fileChangeEventLogo($event)" accept="image/x-png,image/gif,image/jpeg">
+                    </div>
 
                     <div class="col-md-12">
                         <img [src]="imgLogo" *ngIf="imgLogo" width="250">
+                    </div>
+
+                    <div class="form-group">
+                        
+                        <label for="minimo">Imagem</label>
+                        <input type="file"   (change)="fileChangeEventImg($event)" accept="image/x-png,image/gif,image/jpeg">
+                    
+                    </div>
+
+                    <div class="col-md-12">
+                        <img [src]="imgImage" *ngIf="imgImage" width="250">
                     </div>
                 
 

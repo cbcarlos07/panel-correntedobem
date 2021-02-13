@@ -5,6 +5,7 @@ import { AreaFormComponent } from "./area-form/area-form.component";
 import { AreaComponent } from "./area.component";
 import { EquipeFormComponent } from "./equipe/equipe-form/equipe-form.component";
 import { EquipeComponent } from "./equipe/equipe.component";
+import { FotoComponent } from "./foto/foto.component";
 
 const ROUTES: Routes = [
     {path: '', component: AreaComponent},
@@ -12,11 +13,12 @@ const ROUTES: Routes = [
     {path: 'edit/:id', component: AreaFormComponent},
     {path: 'equipe/:id', component: EquipeComponent},
     {path: 'equipe/:area/cad', component: EquipeFormComponent},
-    {path: 'equipe/:area/edit/:id', component: EquipeFormComponent}
+    {path: 'equipe/:area/edit/:id', component: EquipeFormComponent},
+    {path: 'foto/:id', component: FotoComponent}
 ]
 
 @NgModule({
-    declarations: [AreaComponent, AreaFormComponent,EquipeComponent, EquipeFormComponent],
+    declarations: [AreaComponent, AreaFormComponent,EquipeComponent, EquipeFormComponent, FotoComponent],
     imports: [SharedModule, RouterModule.forChild( ROUTES )]
 })
 export class AreaRoutes{}

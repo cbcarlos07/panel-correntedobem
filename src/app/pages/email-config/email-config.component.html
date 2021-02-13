@@ -74,6 +74,11 @@
                                 <input type="file" class="form-control" formControlName="file" (change)="fileChangeEvent($event)">
                                 <span *ngIf="imgLogo" (click)="removerImagem()" class="text-red"><strong>Remover Imagem</strong> </span>
                             </app-input>
+
+                            <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                                <label for="minimo">URL Base da API</label>
+                                <input class="form-control" formControlName="url" placeholder="http://api.com.br">
+                            </app-input>
                             <div class="box-footer clearfix">
                                 <button class="btn btn-primary" type="submit" [disabled]="formCad.invalid"> <i class="fa fa-save"></i> Salvar</button>
                             </div>

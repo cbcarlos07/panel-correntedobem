@@ -34,13 +34,15 @@ export class AreaFormComponent implements OnInit {
 			url:         new FormControl('', {validators: [Validators.required]}),
 			parent_id:   new FormControl('', {validators: [Validators.required]}),
 			logo:        new FormControl(''),
-			icon:        new FormControl('')
-			
+			icon:        new FormControl(''),
+			short_text:  new FormControl('', {validators: [Validators.maxLength(120)]}),			
 		})
 
 		this.getAll()
 		if( this.id > 0 ){
-			this.getById()
+			setTimeout(() => {
+				this.getById()				
+			}, 500);
 		}
 	}
 
@@ -53,6 +55,8 @@ export class AreaFormComponent implements OnInit {
 				this.formCad.controls.order_area.setValue( response.order_area )
 				this.formCad.controls.url.setValue( response.url )
 				this.formCad.controls.description.setValue( response.description.replace(regex,'\n') )
+				console.log('parente_id',response.parent_id);
+				
 				let index = this.items.findIndex( f => f.id == response.parent_id )
 				this.formCad.controls.parent_id.setValue( this.items[ index ].id )
 				if(response.logo)  this.imgImage = `${environment.host}/foto/${response.logo}`

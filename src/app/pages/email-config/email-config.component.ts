@@ -33,13 +33,18 @@ export class EmailConfigComponent implements OnInit {
 			subject_response: new FormControl('', {validators: [Validators.required]}),
 			text_response: new FormControl('', {validators: [Validators.required]}),
 			logo: new FormControl(''),
-			file: new FormControl('')
+			file: new FormControl(''),
+			url: new FormControl('')
 		})
 		this.get()
 	}
-
+//e93N5Ls9A.png
 	submit(){
 		delete this.formCad.value.file
+		if( this.imgLogo ){
+			if( this.imgLogo.includes('http') )
+				delete this.formCad.value.logo
+		}
 		if( this.id == 0 ){
 			this.novo()
 		}else{
@@ -132,6 +137,10 @@ export class EmailConfigComponent implements OnInit {
 					this.formCad.controls.text_response.setValue( dados.text_response )
 					//this.formCad.controls.logo.setValue( dados.logo )
 					this.imgLogo = `${environment.host}/foto/${dados.logo}`
+					this.formCad.controls.subject_send.setValue( dados.subject_send )
+					this.formCad.controls.subject_response.setValue( dados.subject_response )
+					this.formCad.controls.subject_response.setValue( dados.subject_response )
+					this.formCad.controls.url.setValue( dados.url )
 				}
 				
 			})

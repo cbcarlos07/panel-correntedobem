@@ -68,6 +68,11 @@
                         <label for="observacao">Descrição</label>
                         <textarea class="form-control" formControlName="description" rows="10"></textarea>
                     </app-input>
+                    <app-input [showTip]="false">
+                        <label for="observacao">Texto resumido <small>Máx 120 caracteres</small></label>
+                        <textarea #shortText class="form-control" formControlName="short_text" rows="3"></textarea>
+                        <span>{{ shortText.value.length || 0 }}/120</span>
+                    </app-input>
 
                 </div>
 

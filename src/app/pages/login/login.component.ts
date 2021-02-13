@@ -18,6 +18,9 @@ export class LoginComponent implements OnInit {
 			   private _router: Router) { }
 	
 	ngOnInit() {
+		if( this._userService.verifySession() ){
+			this._router.navigate(['/area'])
+		}
 		this.formLogin = new FormGroup({
 			email: new FormControl('', {validators: [Validators.required]}),
 			password: new FormControl('', {validators: [Validators.required]})
