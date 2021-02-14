@@ -88,6 +88,30 @@ const routes: Routes = [
 		children: [
 			{path: '', loadChildren: './pages/redes-sociais/redes-sociais.router#RedesSociaisRoutes'}
 		]
+	},
+	{
+		path: 'acoes',
+		canLoad: [LoggedInGuard],
+		canActivate: [LoggedInGuard],
+		children: [
+			{path: '', loadChildren: './pages/acoes/acoes.router#AcoesRoutes'}
+		]
+	},
+	{
+		path: 'quem-somos',
+		canLoad: [LoggedInGuard],
+		canActivate: [LoggedInGuard],
+		children: [
+			{path: '', loadChildren: './pages/quem-somos/quem-somos.router#QuemSomosRoutes'}
+		]
+	},
+	{
+		path: 'aws',
+		canLoad: [LoggedInGuard],
+		canActivate: [LoggedInGuard],
+		children: [
+			{path: '', loadChildren: './pages/aws/aws.router#AwsRoutes'}
+		]
 	}
 ];
 

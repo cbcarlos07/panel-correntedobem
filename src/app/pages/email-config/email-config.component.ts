@@ -60,6 +60,7 @@ export class EmailConfigComponent implements OnInit {
 				delete this.formCad.value.logo
 			}
 		}
+		delete this.formCad.value.file
 		this._emailConfigService
 			.update( this.id, this.formCad.value )
 			.subscribe((response: any)=>{
@@ -101,7 +102,7 @@ export class EmailConfigComponent implements OnInit {
 	}
 
 	novo(){
-		
+		delete this.formCad.value.file
 		this._emailConfigService
 			.save( this.formCad.value )
 			.subscribe((response: any)=>{

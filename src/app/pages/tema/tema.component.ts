@@ -14,6 +14,7 @@ export class TemaComponent implements OnInit {
 	title: string	
 	imgLogo: string
 	imgImage: string
+	imgImageSmall: string
 	id = 0
 	constructor(private _temaService: TemaService,
 				private _notificationService: NotificationService
@@ -23,8 +24,9 @@ export class TemaComponent implements OnInit {
 		this.formCad = new FormGroup({				
 			description: new FormControl('', {validators: [Validators.required]}),			
 			logo:        new FormControl(''),
-			image:         new FormControl('',),
+			image:       new FormControl('',),
 			tema:        new FormControl('',{validators: [Validators.required]}),
+			image_small: new FormControl('',{validators: [Validators.required]}),
 		})
 		this.get()
 	}
@@ -46,6 +48,17 @@ export class TemaComponent implements OnInit {
 			let retorno: any = await this.convertToBa64(file)
 			this.imgImage = `data:image/png;base64,${retorno}`
 			this.formCad.controls.image.setValue( this.imgImage )
+		}
+	}
+
+	async fileChangeEventImgSmall(event: any) {
+		var files = event.target.files;
+      	var file = files[0];
+		
+		if (files && file) {
+			let retorno: any = await this.convertToBa64(file)
+			this.imgImageSmall = `data:image/png;base64,${retorno}`
+			this.formCad.controls.image_small.setValue( this.imgImageSmall )
 		}
 	}
 
@@ -95,18 +108,19 @@ export class TemaComponent implements OnInit {
 	edit(){
 		
 		if( this.imgLogo ) {
-			if( !this.imgLogo.includes('http') ){
-				this.formCad.controls.logo.setValue( this.imgLogo )
-			}else{
-				delete this.formCad.value.logo
+			if( this.imgLogo.includes('http') ){
+				delete this.formCad.value.logo	
 			}
 		}
 		if( this.imgImage ) {
-			if( !this.imgImage.includes('http') ){
-				this.formCad.controls.image.setValue( this.imgImage )
-			}else{
+			if( this.imgImage.includes('http') ){
 				delete this.formCad.value.image
 			}
+		}
+		if( this.imgImageSmall ) {
+			if( this.imgImageSmall.includes('http') ){
+				delete this.formCad.value.image
+			}	
 		}
 		this._temaService
 			.update(this.id, this.formCad.value)
@@ -138,6 +152,10 @@ export class TemaComponent implements OnInit {
 					}	
 					if( dados.image ) {
 						this.imgImage = `${host}/foto/${dados.image}`
+					}	
+
+					if( dados.image_small ) {
+						this.imgImageSmall = `${host}/foto/${dados.image_small}`
 					}	
 					
 					this.formCad.controls.description.setValue( dados.description )

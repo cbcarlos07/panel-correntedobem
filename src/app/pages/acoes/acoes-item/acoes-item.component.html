@@ -1,0 +1,53 @@
+
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Lista de ações</h3>
+                <div class="row"></div>
+                <div class="box-tools">
+                    <a [routerLink]="[]" class="btn btn-success" (click)="telaNovaAcao()" >
+                        <i class="fa fa-plus"></i> Nova Ação
+                    </a>
+                </div>
+            </div>
+            
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-hover" >
+                    <thead>
+                        <th>Nome</th>
+                        <th>Quantidade</th>
+                        <th style="width: 80px">Ação</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items">
+                            <td>{{ item.description }}</td>
+                            <td>{{ item.value }}</td>                            
+                            <td>
+                                <a [routerLink]="[]" title="Visualizar" (click)="telaEditarAcao(item)">
+                                    <i class="fa  fa-eye"></i>
+                                </a>
+                                &nbsp;
+                                <a [routerLink]="[]" title="Remover" (click)="perguntaRemover( item )">
+                                    <i class="fa  fa-remove text-danger"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              
+            </div>
+        </div>
+        <!-- /.box -->
+
+        
+        
+        
+        <!-- /.col -->
+    </div>
+
+<!-- content -->

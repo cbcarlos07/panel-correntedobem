@@ -55,12 +55,11 @@ export class AreaFormComponent implements OnInit {
 				this.formCad.controls.order_area.setValue( response.order_area )
 				this.formCad.controls.url.setValue( response.url )
 				this.formCad.controls.description.setValue( response.description.replace(regex,'\n') )
-				console.log('parente_id',response.parent_id);
-				
 				let index = this.items.findIndex( f => f.id == response.parent_id )
 				this.formCad.controls.parent_id.setValue( this.items[ index ].id )
 				if(response.logo)  this.imgImage = `${environment.host}/foto/${response.logo}`
 				if(response.icon)  this.imgIcon = `${environment.host}/foto/${response.icon}`
+				this.formCad.controls.short_text.setValue( response.short_text )
 			})
 	}
 

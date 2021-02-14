@@ -37,6 +37,9 @@ export class MenuComponent implements OnInit {
 			{url: 'contato', icone: 'fa-bell', menu: 'Contatos'},
 			{url: 'dados-contato', icone: 'fa-map-pin', menu: 'Dado de Contato'},
 			{url: 'redes-sociais', icone: 'fa-twitter', menu: 'Redes Sociais'},
+			{url: 'acoes', icone: 'fa-life-bouy', menu: 'Ações'},
+			{url: 'quem-somos', icone: ' fa-book', menu: 'Quem Somos'},
+			{url: 'aws', icone: 'fa-amazon', menu: 'Configuração do AWS '},
 		]
 		
 		
