@@ -1,0 +1,52 @@
+<section class="content">
+        
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">{{ title }}</h3>
+                <div class="row"></div>
+               
+
+                <div class="box-tools">
+                    
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="col-md-6">
+                        
+                    <form [formGroup]="formCad" (ngSubmit)="submit()">
+                        <div class="col-md-12">
+                            <app-input [showTip]="false">
+                                <label for="observacao">Título</label>
+                                <input class="form-control" formControlName="title" />
+                            </app-input>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="minimo">Foto</label>
+                            <input type="file" class="form-control" (change)="fileChangeEvent($event)" >
+                        </div>
+
+                        <div class="col-md-6">
+                            <img [src]="imgImage" *ngIf="imgImage" width="150">
+                        </div>
+        
+                        
+                        <div class="box-footer clearfix">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary" type="submit" [disabled]="formCad.invalid"> 
+                                    <i class="fa fa-save"></i> Salvar
+                                </button>
+
+                            </div>
+                        </div>
+                    </form>    
+                </div>
+            </div>
+
+        </div>
+    </div>
+  
+
+    <app-parceiros-lista [images]="images" (item)="getItem($event)" (remove)="getimages()"></app-parceiros-lista>
+
+</section>

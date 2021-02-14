@@ -47,7 +47,7 @@ export class FotoComponent implements OnInit {
 	}
 
 	submit(){
-		console.log('idEdit',this.idEdit);
+		
 		
 		if( this.idEdit == 0 ){
 			this.novo()
@@ -76,7 +76,7 @@ export class FotoComponent implements OnInit {
 	update(){
 		if( this.formCad.value.foto == "" || this.formCad.value.foto == null)
 			delete this.formCad.value.foto
-		console.log('form',this.formCad.value);
+		
 		
 		this._fotoService
 			.update(this.idEdit, this.formCad.value)

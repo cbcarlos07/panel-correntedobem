@@ -112,6 +112,14 @@ const routes: Routes = [
 		children: [
 			{path: '', loadChildren: './pages/aws/aws.router#AwsRoutes'}
 		]
+	},
+	{
+		path: 'parceiros',
+		canLoad: [LoggedInGuard],
+		canActivate: [LoggedInGuard],
+		children: [
+			{path: '', loadChildren: './pages/parceiros/parceiros.router#ParceirosRoutes'}
+		]
 	}
 ];
 

@@ -10,12 +10,56 @@
     </div>
         
     <section class="sidebar">
-            <ul class="sidebar-menu" data-widget="tree">
-                <li routerLinkActive="active" *ngFor="let menu of menus">
-                    <a [routerLink]="menu.url">
-                        <i class="fa {{ menu.icone }}" ></i><span>{{ menu.menu }}</span>
-                    </a>
-                </li>
-            </ul>
-        </section>
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MAIN NAVIGATION</li>
+            <li class="treeview" style="height: auto;">
+                <a href="#">
+                    <i class="fa fa-tasks"></i> <span>Listas</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                    <li *ngFor="let item of listas">
+                        <a [routerLink]="item.url">
+                            <i class="fa {{ item.icone }}" ></i><span>{{ item.menu }}</span>
+                        </a>            
+                    </li>                              
+                </ul>
+                
+            </li>
+            <li class="treeview" style="height: auto;">
+                <a href="#">
+                    <i class="fa fa-check-square"></i> <span>Formulários</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                    <li *ngFor="let item of forms" routerLinkActive="active">
+                        <a [routerLink]="item.url">
+                            <i class="fa {{ item.icone }}" ></i><span>{{ item.menu }}</span>
+                        </a>            
+                    </li>                              
+                </ul>                
+            </li>
+            <li class="treeview" style="height: auto;">
+                <a href="#">
+                    <i class="fa fa-gear"></i> <span>Configurações</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                    <li *ngFor="let item of configs" routerLinkActive="active">
+                        <a [routerLink]="item.url">
+                            <i class="fa {{ item.icone }}" ></i><span>{{ item.menu }}</span>
+                        </a>            
+                    </li>                              
+                </ul>                
+            </li>
+
+                
+        </ul>
+    </section>
 </aside>

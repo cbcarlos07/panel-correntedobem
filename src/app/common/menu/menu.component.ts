@@ -14,6 +14,9 @@ export class MenuComponent implements OnInit {
 	mostrarMenu: false
 	foto: string
 	semfoto = 'assets/icon.png'
+	listas = []
+	forms  = []
+	configs = []
 	constructor(private _usuarioService: UsuarioService) { }
 	
 	ngOnInit() {
@@ -26,6 +29,27 @@ export class MenuComponent implements OnInit {
 	}
 
 	getMenu(){
+		this.listas = [
+			{url: 'area', icone: ' fa-filter', menu: 'Área'},			
+			{url: 'usuario', icone: ' fa-user', menu: 'Usuário'},
+			{url: 'contato', icone: 'fa-bell', menu: 'Contatos'},
+			{url: 'redes-sociais', icone: 'fa-twitter', menu: 'Redes Sociais'},
+			{url: 'acoes', icone: 'fa-life-bouy', menu: 'Ações'},
+			{url: 'parceiros', icone: 'fa-industry', menu: 'Parceiros'},
+		]
+
+		this.forms = [
+			{url: 'meta', icone: ' fa-pencil-square-o', menu: 'Meta'},
+			{url: 'arrecadacao', icone: ' fa-money', menu: 'Transparência'},
+			{url: 'tema', icone: ' fa-heartbeat', menu: 'Tema'},			
+			{url: 'quem-somos', icone: ' fa-book', menu: 'Quem Somos'},
+		]
+		this.configs = [
+			{url: 'menu-config', icone: ' fa-bars', menu: 'Menu'},
+			{url: 'email-config', icone: 'fa-envelope', menu: 'Configuração de Email'},
+			{url: 'dados-contato', icone: 'fa-map-pin', menu: 'Dado de Contato'},
+			{url: 'aws', icone: 'fa-amazon', menu: 'Configuração do AWS '},
+		]
 		this.menus = [
 			{url: 'area', icone: ' fa-filter', menu: 'Área'},
 			{url: 'meta', icone: ' fa-pencil-square-o', menu: 'Meta'},
