@@ -57,7 +57,7 @@ export class AcoesItemComponent implements OnInit {
 			onOpen: () =>{				
 				let descricao: any = document.getElementById('swal-input1')
 				let valor: any = document.getElementById('swal-input2')				
-				descricao.value = `${obj.descricao == undefined ? '' : obj.description}`
+				descricao.value = `${obj.description == undefined ? '' : obj.description}`
 				valor.value = `${obj.value == undefined ? '' : obj.value}`
 			},
 			preConfirm: async () => {				
@@ -100,6 +100,7 @@ export class AcoesItemComponent implements OnInit {
 
 	salvarAcao( obj: any ){
 		
+		
 		if( this.id != 0){
 			return this.atualizarAcao( obj )
 		}else{
@@ -122,7 +123,14 @@ export class AcoesItemComponent implements OnInit {
 	}
 
 	atualizarAcao(obj: any){
+		return new Promise((resolve, reject)=>{
+			this._acoesItemService
+				.update(this.id, obj)
+				.subscribe((response: any)=>{
+					resolve({status: true, title: 'Ação atualizada com sucesso!' })		
+				})
 
+		})
 	}
 
 	perguntaRemover( parametro: any ){

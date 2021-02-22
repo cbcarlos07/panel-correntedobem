@@ -38,9 +38,7 @@ export class AreaComponent implements OnInit {
 		this._userService
 			.notifierLogin
 			.subscribe( load => {
-				setTimeout(() => {
-					window.location.reload();					
-				}, 500);
+				
 			})
 	}
 

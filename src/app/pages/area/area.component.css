@@ -1,5 +1,8 @@
 .content{
     overflow-x: hidden;
     overflow-y: auto;
-    max-height: 690px;
+    max-height: 590px;
+}
+.scrollme {
+    overflow-x: auto;
 }

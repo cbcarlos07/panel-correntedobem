@@ -14,48 +14,51 @@
             </div>
             
             <!-- /.box-header -->
-            <div class="box-body">
-                <table class="table table-hover" >
-                    <thead>
-                        <th>Título</th>                          
-                        <th>Ordem</th>                          
-                        <th>URL</th>                          
-                        <th>Ícone</th>                          
-                        <th>Pai</th>                          
-                        <th style="width: 110px">Ação</th>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let obj of items">
-                            <td>{{ obj.title }}</td>
-                            <td>{{ obj.order_area }}</td>
-                            <td>{{ obj.url }}</td>
-                            <td>
-                                
-                                <img *ngIf="obj.icon" [src]="host +'/'+obj.icon" width="25">
-                            </td>
-                            <td>{{ obj.pai }}</td>
-                            <td>
-                                <a [routerLink]="['/area/edit', obj.id]" title="Editar" >
-                                    <i class="fa  fa-edit"></i>
-                                </a>
-                                &nbsp;
-                                <a [routerLink]="[]" title="Remover" (click)="perguntaRemover( obj )">
-                                    <i class="fa  fa-remove text-danger"></i>
-                                </a>
-                                &nbsp;
-                                <a [routerLink]="['/area/equipe', obj.id]" title="Equipe" >
-                                    <i class="fa  fa-users text-primary"></i>
-                                </a>
-                                &nbsp;
-                                <a [routerLink]="['/area/foto', obj.id]" title="Adicionar fotos" >
-                                    <i class="fa   fa-file-image-o text-success"></i>
-                                </a>
-                              
-                            </td>
-                        </tr>
+            <div class="box-body ">
+                <div class="scrollme">
 
-                    </tbody>
-                </table>
+                    <table class="table table-responsive  table-hover" >
+                        <thead>
+                            <th>Título</th>                          
+                            <th>Ordem</th>                          
+                            <th>URL</th>                          
+                            <th>Ícone</th>                          
+                            <th>Pai</th>                          
+                            <th style="width: 110px">Ação</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let obj of items">
+                                <td>{{ obj.title }}</td>
+                                <td>{{ obj.order_area }}</td>
+                                <td>{{ obj.url }}</td>
+                                <td>
+                                    
+                                    <img *ngIf="obj.icon" [src]="host +'/'+obj.icon" width="25">
+                                </td>
+                                <td>{{ obj.pai }}</td>
+                                <td>
+                                    <a [routerLink]="['/area/edit', obj.id]" title="Editar" >
+                                        <i class="fa  fa-edit"></i>
+                                    </a>
+                                    &nbsp;
+                                    <a [routerLink]="[]" title="Remover" (click)="perguntaRemover( obj )">
+                                        <i class="fa  fa-remove text-danger"></i>
+                                    </a>
+                                    &nbsp;
+                                    <a [routerLink]="['/area/equipe', obj.id]" title="Equipe" >
+                                        <i class="fa  fa-users text-primary"></i>
+                                    </a>
+                                    &nbsp;
+                                    <a [routerLink]="['/area/foto', obj.id]" title="Adicionar fotos" >
+                                        <i class="fa   fa-file-image-o text-success"></i>
+                                    </a>
+                                  
+                                </td>
+                            </tr>
+    
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">

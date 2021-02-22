@@ -35,6 +35,25 @@
                         </select>
                     </app-input>
 
+                    <div class="row"></div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="minimo">Foto</label>
+                            <input type="file"  (change)="fileChangeEvent($event)" accept="image/x-png,image/gif,image/jpeg">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <img [src]="photoImg" width="250" *ngIf="photoImg" />
+                    </div>
+                    <div class="row"></div>
+
+                    <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                        <label for="descricao">Legenda da foto</label>
+                        <input class="form-control" placeholder="" formControlName="subtitle" >
+                    </app-input>
+
                 </div>
 
                 <div class="box-footer clearfix">

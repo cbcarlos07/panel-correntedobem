@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { EquipeService } from 'src/app/service/equipe.service';
+import { HelperService } from 'src/app/service/helper.service';
 import { NotificationService } from 'src/app/service/notification.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-equipe-form',
@@ -16,11 +18,16 @@ export class EquipeFormComponent implements OnInit {
 	title: string
 	items = []
 	area: 0
+	photoImg: string
+	host: string
 	constructor(private _location: Location,
 				private _notificationService: NotificationService,
 				private _activateRoute: ActivatedRoute,
-				private _equipeService: EquipeService
-		) { }
+				private _equipeService: EquipeService,
+				private _helperService: HelperService
+		) { 
+			this.host = environment.host
+		}
 	
 	ngOnInit() {
 		this.id  = this._activateRoute.snapshot.params['id'] || 0
@@ -31,11 +38,14 @@ export class EquipeFormComponent implements OnInit {
 			name:        new FormControl('',{validators: [Validators.required]}),			
 			order_item:  new FormControl(0, {validators: [Validators.required]}),			
 			parent_id:   new FormControl('', {validators: [Validators.required]}),
-			area_id:     new FormControl(this.area)
+			area_id:     new FormControl(this.area),
+			photo:        new FormControl(''),
+			subtitle:    new FormControl('')
 		})
 		this.getEquipe()
-
-		if( this.id > 0 ) this.getById()
+		setTimeout(() => {
+			if( this.id > 0 ) this.getById()			
+		}, 100);
 	}
 
 	getEquipe(){
@@ -57,6 +67,11 @@ export class EquipeFormComponent implements OnInit {
 				this.formCad.controls.order_item.setValue( response.order_item )
 				let index = this.items.findIndex( (i: any) => i.id == response.parent_id)
 				this.formCad.controls.parent_id.setValue( this.items[ index ].id )
+				this.formCad.controls.subtitle.setValue( response.subtitle )
+				if( response.photo != null ){
+					this.photoImg = `${this.host}/foto/${response.photo}`
+				}
+				
 			})
 	}
 
@@ -66,6 +81,9 @@ export class EquipeFormComponent implements OnInit {
 
 	salvar(){
 		delete this.formCad.value.id
+		if( this.photoImg.includes('http') || this.formCad.value.photo == '' ){
+			delete this.formCad.value.photo
+		}
 		if( this.id == 0 ){
 			this.novo( this.formCad.value )
 		}else{
@@ -96,6 +114,17 @@ export class EquipeFormComponent implements OnInit {
 		}
 		this._notificationService.notify( obj )
 		this.voltar()
+	}
+
+	async fileChangeEvent(event) {
+		var files = event.target.files;
+      	var file = files[0];
+		
+		if (files && file) {
+			let retorno: any = await this._helperService.convertToBa64(file)
+			this.photoImg = `data:image/png;base64,${retorno}`
+			this.formCad.controls.photo.setValue( this.photoImg )
+		}
 	}
 	
 }
