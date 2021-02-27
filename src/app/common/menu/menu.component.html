@@ -20,7 +20,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu" style="display: none;">
-                    <li *ngFor="let item of listas">
+                    <li *ngFor="let item of listas" routerLinkActive="active">
                         <a [routerLink]="item.url">
                             <i class="fa {{ item.icone }}" ></i><span>{{ item.menu }}</span>
                         </a>            

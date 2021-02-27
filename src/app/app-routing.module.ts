@@ -120,6 +120,14 @@ const routes: Routes = [
 		children: [
 			{path: '', loadChildren: './pages/parceiros/parceiros.router#ParceirosRoutes'}
 		]
+	},
+	{
+		path: 'dashboard',
+		canLoad: [LoggedInGuard],
+		canActivate: [LoggedInGuard],
+		children: [
+			{path: '', loadChildren: './pages/dashboard/dashboard.router#DashboardRoutes'}
+		]
 	}
 ];
 
