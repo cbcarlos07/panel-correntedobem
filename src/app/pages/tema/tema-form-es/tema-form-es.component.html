@@ -1,0 +1,39 @@
+<form [formGroup]="formCad" >
+
+    <div class="col-md-12">
+        <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+            <label for="minimo">Tema</label>
+            <input formControlName="tema_es" class="form-control" (keyup)="enviarTema()">
+        </app-input>
+    </div>
+    
+    <div class="col-md-12">
+        <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+            <label for="minimo">Texto del botón </label>
+            <input formControlName="text_btn_es" class="form-control" (keyup)="enviarTextoBtn()">
+        </app-input>
+    </div>
+                                  
+    <div class="col-md-12">
+        <app-input [showTip]="false">
+            <label for="observacao">Descripción</label>
+            <textarea class="form-control" formControlName="description_es" rows="3" (keyup)="enviarDescription()"></textarea>
+        </app-input>
+    </div>
+
+       
+        
+        <div class="col-md-6 col-xs-12">
+        
+            <div class="form-group">
+                <label for="minimo">Marca del logotipo</label>
+                <input type="file"   (change)="fileChangeEventLogo( $event)" accept="image/x-png,image/gif,image/jpeg">
+            </div>
+        
+            <div class="col-md-12">
+                <img [src]="imgLogo" *ngIf="imgLogo" width="250">
+            </div>
+        
+        </div>
+    
+</form>

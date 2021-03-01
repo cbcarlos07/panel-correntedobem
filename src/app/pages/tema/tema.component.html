@@ -1,44 +1,63 @@
 <section class="content">
-        
+    
+    <div class="row"></div>
     <div class="col-md-12">
-        
         <form [formGroup]="formCad" (ngSubmit)="submit()">
-
             <div class="box">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ title }}</h3>
                 </div>
 
                 <div class="box-body">
-
-                    <div class="col-md-12">
-                        <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
-                            <label for="minimo">Tema</label>
-                            <input formControlName="tema" class="form-control">
-                        </app-input>
-                    </div>
-
-                    <div class="col-md-12">
-                        <app-input [showTip]="false">
-                            <label for="observacao">Descrição</label>
-                            <textarea class="form-control" formControlName="description" rows="3"></textarea>
-                        </app-input>
-                    </div>
                     
-                    <div class="col-md-6 col-xs-12">
 
-                        <div class="form-group">
-                            <label for="minimo">Logo</label>
-                            <input type="file"   (change)="fileChangeEventLogo($event)" accept="image/x-png,image/gif,image/jpeg">
-                        </div>
-    
-                        <div class="col-md-12">
-                            <img [src]="imgLogo" *ngIf="imgLogo" width="250">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#pt">Portugês</a></li>
+                        <li><a data-toggle="tab" href="#es">Español</a></li>
+                        <li><a data-toggle="tab" href="#en">English</a></li>                        
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="pt" class="tab-pane fade in active">
+
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+
+                                    <app-tema-form-pt *ngIf="tema" [objTema]="tema" (tema)="getTema($event)" (logo)="getLogo($event)" (description)="getDescription($event)" (textBtn)="getTextBtn($event)"></app-tema-form-pt>
+
+                                </div>
+                              </div>
+
                         </div>
 
-                    </div>
+                        <div id="es" class="tab-pane fade">
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-body">
 
+                                    <app-tema-form-es *ngIf="tema" [objTema]="tema" (tema)="getTemaEs($event)" (logo)="getLogoEs($event)" (description)="getDescriptionEs($event)" (textBtn)="getTextBtnEs($event)"></app-tema-form-es>
+
+                                </div>
+                              </div>
+
+                        </div>
+
+                        <div id="en" class="tab-pane fade">
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+
+                                    <app-tema-form-en *ngIf="tema" [objTema]="tema" (tema)="getTemaEn($event )" (logo)="getLogoEn($event)" (description)="getDescriptionEn($event)" (textBtn)="getTextBtnEn($event)"></app-tema-form-en>
+
+                                </div>
+                              </div>
+
+                        </div>
+
+                    </div>
                     
+                    <div class="row"></div>
+
                     <div class="col-md-6 col-xs-12">
 
                         <div class="form-group">
@@ -76,7 +95,7 @@
 
 
             </div>
-        </form>    
+        </form>
 
     </div>
 
