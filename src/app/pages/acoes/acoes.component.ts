@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AcoesService } from 'src/app/service/acoes.service';
 import { NotificationService } from 'src/app/service/notification.service';
+import { Acoes } from './acoes.model';
 
 @Component({
   selector: 'app-acoes',
@@ -12,6 +13,7 @@ export class AcoesComponent implements OnInit {
 	title: string
 	formCad: FormGroup
 	id: number
+	acoes: Acoes
 	constructor(private _acoesService: AcoesService,
 				private _notificationService: NotificationService
 		) { }
@@ -21,7 +23,11 @@ export class AcoesComponent implements OnInit {
 		this.id = 0
 		this.formCad = new FormGroup({
 			title: new FormControl('', {validators: [Validators.required]}),
-			description: new FormControl('')
+			title_es: new FormControl(''),
+			title_en: new FormControl(''),
+			description: new FormControl(''),
+			description_es: new FormControl(''),
+			description_en: new FormControl('')
 		})
 		this.get()
 	}
@@ -33,8 +39,13 @@ export class AcoesComponent implements OnInit {
 				if(response.length > 0){
 					this.title = 'Editar Informações de Área de Ação'
 					let dados = response[0]
+					this.acoes = dados
 					this.formCad.controls.title.setValue( dados.title )
+					this.formCad.controls.title_es.setValue( dados.title_es )
+					this.formCad.controls.title_en.setValue( dados.title_en )
 					this.formCad.controls.description.setValue( dados.description )
+					this.formCad.controls.description_es.setValue( dados.description_es )
+					this.formCad.controls.description_en.setValue( dados.description_en )
 					this.id = dados.id
 				}
 			})
@@ -72,6 +83,27 @@ export class AcoesComponent implements OnInit {
 			status: true
 		}
 		this._notificationService.notify( obj )
+	}
+
+	setTitle(value){
+		this.formCad.controls.title.setValue( value )
+	}
+	setTitleEs(value){
+		this.formCad.controls.title_es.setValue( value )
+	}
+	setTitleEn(value){
+		
+		
+		this.formCad.controls.title_en.setValue( value )
+	}
+	setDescription(value){
+		this.formCad.controls.description.setValue( value )
+	}
+	setDescriptionEs(value){
+		this.formCad.controls.description_es.setValue( value )
+	}
+	setDescriptionEn(value){
+		this.formCad.controls.description_en.setValue( value )
 	}
 
 }

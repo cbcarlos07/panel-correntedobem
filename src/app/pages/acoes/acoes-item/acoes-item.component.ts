@@ -20,7 +20,6 @@ export class AcoesItemComponent implements OnInit {
 		this._acoesItemService
 			.get()
 			.subscribe((response: any)=>{
-				console.log(response);
 				
 				this.items = response
 			})
@@ -43,7 +42,9 @@ export class AcoesItemComponent implements OnInit {
 			title: this.title,
 			html: 			
 			'<input id="swal-input1" class="swal2-input" placeholder="Descrição" title="Descrição">'+
-			'<input id="swal-input2" class="swal2-input form-control" placeholder="Valor" title="Valor">' ,
+			'<input id="swal-input2" class="swal2-input" placeholder="Descripción" title="Descripción">'+
+			'<input id="swal-input3" class="swal2-input" placeholder="Description" title="Description">'+
+			'<input id="swal-input4" class="swal2-input form-control" placeholder="Valor" title="Valor">' ,
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
@@ -56,17 +57,27 @@ export class AcoesItemComponent implements OnInit {
 			allowOutsideClick: false,
 			onOpen: () =>{				
 				let descricao: any = document.getElementById('swal-input1')
-				let valor: any = document.getElementById('swal-input2')				
+				let descricao_es: any = document.getElementById('swal-input2')
+				let descricao_en: any = document.getElementById('swal-input3')
+				let valor: any = document.getElementById('swal-input4')				
 				descricao.value = `${obj.description == undefined ? '' : obj.description}`
+				descricao_es.value = `${obj.description_es == undefined ? '' : obj.description_es}`
+				descricao_en.value = `${obj.description_en == undefined ? '' : obj.description_en}`
 				valor.value = `${obj.value == undefined ? '' : obj.value}`
 			},
 			preConfirm: async () => {				
 				let campo_descricao: any = document.getElementById('swal-input1')
-				let campo_valor: any = document.getElementById('swal-input2')
+				let campo_descricao_es: any = document.getElementById('swal-input2')
+				let campo_descricao_en: any = document.getElementById('swal-input3')
+				let campo_valor: any = document.getElementById('swal-input4')
 				let descricao = campo_descricao.value
+				let descricao_es = campo_descricao_es.value
+				let descricao_en = campo_descricao_en.value
 				let valor = campo_valor.value				
 				return await this.salvarAcao({
 					description: descricao,
+					description_es: descricao_es,
+					description_en: descricao_en,
 					value: valor,
 				})
 			}

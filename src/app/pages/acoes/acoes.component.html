@@ -11,17 +11,56 @@
 
                 <div class="box-body">
 
-                    <app-input [showTip]="false">
-                        <label for="observacao">Título</label>
-                        <input class="form-control" formControlName="title" placeholder="Texto pequeno" />
-                    </app-input>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#pt">Português</a></li>
+                        <li><a data-toggle="tab" href="#es">Español</a></li>
+                        <li><a data-toggle="tab" href="#en">English</a></li>                        
+                    </ul>
 
-                    <app-input [showTip]="false">
-                        <label for="observacao">Descrição</label>
-                        <textarea class="form-control" formControlName="description" rows="3"></textarea>
-                    </app-input>
+                    <div class="tab-content">
+                        <div id="pt" class="tab-pane fade in active">
+                            <app-acoes-form
+                                *ngIf="acoes"
+                                [titleStr]="acoes.title"
+                                [descriptionStr]="acoes.description"
+                                (title)="setTitle($event)"
+                                (description)="setDescription($event)"
+                            >
+                            </app-acoes-form>
+                            
+                        </div>
+                        <div id="es" class="tab-pane">
+                            <app-acoes-form
+                                *ngIf="acoes"
+                                [titleStr]="acoes.title_es"
+                                [descriptionStr]="acoes.description_es"
+                                (title)="setTitleEs($event)"
+                                (description)="setDescriptionEs($event)"
+                                titleLabel="Título"
+                                descriptionLabel="Descripción"
+                            >
+                            </app-acoes-form>
+                        </div>
+                        <div id="en" class="tab-pane">
+                            <app-acoes-form
+                            *ngIf="acoes"
+                            [titleStr]="acoes.title_en"
+                            [descriptionStr]="acoes.description_en"
+                            (title)="setTitleEn($event)"
+                            (description)="setDescriptionEn($event)"
+                            titleLabel="Títle"
+                            descriptionLabel="Description"
+                            >
+                            </app-acoes-form>
+                            
+                        </div>    
+                    </div>
 
                 </div>
+            
+
+
+                
 
                 <div class="box-footer clearfix">
                     <button class="btn btn-primary" type="submit" [disabled]="formCad.invalid"> <i class="fa fa-save"></i> Salvar</button>

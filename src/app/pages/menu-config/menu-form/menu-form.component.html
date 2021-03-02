@@ -21,6 +21,14 @@
                             <label for="observacao">Nome</label>
                             <input class="form-control" formControlName="name" />
                         </app-input>
+                        <app-input [showTip]="false">
+                            <label for="observacao">Nombre</label>
+                            <input class="form-control" formControlName="name_es" />
+                        </app-input>
+                        <app-input [showTip]="false">
+                            <label for="observacao">Name</label>
+                            <input class="form-control" formControlName="name_en" />
+                        </app-input>
     
                         <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
                             <label for="minimo">URL</label>

@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+
+
+        <form [formGroup]="formCad">
+            <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                <label for="descricao">{{ titleLabel }} </label>
+                <input class="form-control" placeholder="Título" formControlName="title" (keyup)="enviatTitle()">
+            </app-input>
+        
+            <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                <label for="descricao">{{ descriptionLabel }}</label>
+                <textarea class="form-control" rows="5" placeholder="Título" formControlName="description" (keyup)="enviatDescription()"></textarea>
+            </app-input>
+        
+            <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                <label for="descricao">{{ shortTextLabel }} <small>Máx 120 caracteres</small></label>
+                <textarea #shortText class="form-control" placeholder="short_text" formControlName="short_text" (keyup)="enviatShortText()" rows="3"></textarea>
+                <span>{{ shortText.value.length || 0 }}/120</span>
+            </app-input>
+        
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="minimo">Logo</label>
+                    <input type="file"  (change)="fileChangeEvent($event)" accept="image/x-png,image/gif,image/jpeg">
+                </div>
+            </div>
+        
+            <div class="col-md-6">
+                <img [src]="imgImage" width="150" *ngIf="imgImage" />
+            </div>
+        
+        </form>
+    </div>
+  </div>

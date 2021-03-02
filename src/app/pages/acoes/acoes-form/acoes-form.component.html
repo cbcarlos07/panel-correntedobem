@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form [formGroup]="formCad">
+            <app-input [showTip]="false">
+                <label for="observacao">{{ titleLabel }} </label>
+                <input class="form-control" formControlName="title" placeholder="Texto pequeno" (keyup)="enviarTitle()" />
+            </app-input>
+            
+            <app-input [showTip]="false">
+                <label for="observacao">{{ descriptionLabel }}</label>
+                <textarea class="form-control" formControlName="description" rows="3" (keyup)="enviarDescription()"></textarea>
+            </app-input>
+        </form>
+    </div>
+</div>   

@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AreaService } from 'src/app/service/area.service';
 import { NotificationService } from 'src/app/service/notification.service';
 import { environment } from 'src/environments/environment';
+import { Area } from './area.model';
 
 @Component({
 	selector: 'app-area-form',
@@ -19,6 +20,7 @@ export class AreaFormComponent implements OnInit {
 	items = []
 	imgImage: string
 	imgIcon: string
+	area: Area
 	constructor(private _location: Location,
 				private _areaService: AreaService,
 				private _notificationService: NotificationService,
@@ -28,14 +30,22 @@ export class AreaFormComponent implements OnInit {
 		this.id = this._activateRoute.snapshot.params['id'] || 0
 		this.title = this.id != 0 ? 'Alterar Cadastro' : 'Cadastrar'
 		this.formCad = new FormGroup({			
-			title:       new FormControl(''),
-			description: new FormControl('', {validators: [Validators.required]}),
-			order_area:  new FormControl(0, {validators: [Validators.required]}),
+			title:          new FormControl(''),
+			description:    new FormControl('', {validators: [Validators.required]}),
+			short_text:     new FormControl('', {validators: [Validators.maxLength(120)]}),			
+			logo:           new FormControl(''),
+			title_es:       new FormControl(''),
+			description_es: new FormControl(''),			
+			short_text_es:  new FormControl(''),
+			logo_es:        new FormControl(''),
+			title_en:       new FormControl(''),
+			description_en: new FormControl(''),			
+			short_text_en:  new FormControl(''),
+			logo_en:        new FormControl(''),
+			order_area:     new FormControl(0, {validators: [Validators.required]}),
 			url:         new FormControl('', {validators: [Validators.required]}),
 			parent_id:   new FormControl('', {validators: [Validators.required]}),
-			logo:        new FormControl(''),
 			icon:        new FormControl(''),
-			short_text:  new FormControl('', {validators: [Validators.maxLength(120)]}),			
 		})
 
 		this.getAll()
@@ -50,6 +60,7 @@ export class AreaFormComponent implements OnInit {
 		this._areaService
 			.getById( this.id )
 			.subscribe((response: any)=>{
+				this.area = response
 				var regex = /<br\s*[\/]?>/gi;
 				this.formCad.controls.title.setValue( response.title )
 				this.formCad.controls.order_area.setValue( response.order_area )
@@ -78,18 +89,7 @@ export class AreaFormComponent implements OnInit {
 		this._location.back()
 	}
 
-	async fileChangeEvent(event) {
-		var files = event.target.files;
-      	var file = files[0];
-		
-		if (files && file) {
-			let retorno: any = await this.convertToBa64(file)
-			this.imgImage = `data:image/png;base64,${retorno}`
-			
-			
-			this.formCad.controls.logo.setValue( this.imgImage )
-		}
-	}
+	
 	async fileChangeEvent1(event) {
 		var files = event.target.files;
       	var file = files[0];
@@ -102,8 +102,14 @@ export class AreaFormComponent implements OnInit {
 	}
 
 	salvar(){
-		if( !this.imgImage || this.imgImage.includes( 'http' )){
+		if( this.formCad.value.logo.includes( 'http' ) || this.formCad.value.logo == ''){
 			delete this.formCad.value.logo
+		}
+		if( this.formCad.value.logo_es.includes( 'http' ) || this.formCad.value.logo_es == ''){
+			delete this.formCad.value.logo_es
+		}
+		if( this.formCad.value.logo_en.includes( 'http' ) || this.formCad.value.logo_en == ''){
+			delete this.formCad.value.logo_en
 		}
 		if( !this.imgIcon || this.imgIcon.includes( 'http' )){
 			delete this.formCad.value.icon
@@ -159,6 +165,45 @@ export class AreaFormComponent implements OnInit {
 		})
 	}
 	
+
+	setTitle(value){
+		this.formCad.controls.title.setValue( value )
+	}
+	setTitleEs(value){
+		this.formCad.controls.title_es.setValue( value )
+	}
+	setTitleEn(value){
+		this.formCad.controls.title_en.setValue( value )
+	}
+
+	setDescription(value){
+		this.formCad.controls.description.setValue( value )
+	}
+	setDescriptionEs(value){
+		this.formCad.controls.description_es.setValue( value )
+	}
+	setDescriptionEn(value){
+		this.formCad.controls.description_en.setValue( value )
+	}
+
+	setShortText(value){
+		this.formCad.controls.short_text.setValue( value )
+	}
+	setShortTextEs(value){
+		this.formCad.controls.short_text_es.setValue( value )
+	}
+	setShortTextEn(value){
+		this.formCad.controls.short_text_en.setValue( value )
+	}
+	setLogo(value){
+		this.formCad.controls.logo.setValue( value )
+	}
+	setLogoEs(value){
+		this.formCad.controls.logo_es.setValue( value )
+	}
+	setLogoEn(value){
+		this.formCad.controls.logo_en.setValue( value )
+	}
 
 	
 }

@@ -26,7 +26,9 @@ export class MenuFormComponent implements OnInit {
 		this.formCad = new FormGroup({
 			name: new FormControl('', {validators: [Validators.required]}),
 			url: new FormControl('',{validators: [Validators.required]}),
-			order_item: new FormControl('',{validators: [Validators.required]})
+			order_item: new FormControl('',{validators: [Validators.required]}),
+			name_es: new FormControl(''),
+			name_en: new FormControl('')
 		})
 
 		if( this.id > 0 ) this.buscar()
@@ -37,6 +39,8 @@ export class MenuFormComponent implements OnInit {
 			.getById( this.id )
 			.subscribe((response: any)=>{
 				this.formCad.controls.name.setValue( response.name )
+				this.formCad.controls.name_es.setValue( response.name_es )
+				this.formCad.controls.name_en.setValue( response.name_en )
 				this.formCad.controls.url.setValue( response.url )
 				this.formCad.controls.order_item.setValue( response.order_item )
 			})

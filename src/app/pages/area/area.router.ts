@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { SharedModule } from "src/app/shared/shared.module";
+import { AreaFormPtComponent } from "./area-form/area-form-pt/area-form-pt.component";
 import { AreaFormComponent } from "./area-form/area-form.component";
 import { AreaComponent } from "./area.component";
 import { EquipeFormComponent } from "./equipe/equipe-form/equipe-form.component";
@@ -18,7 +19,7 @@ const ROUTES: Routes = [
 ]
 
 @NgModule({
-    declarations: [AreaComponent, AreaFormComponent,EquipeComponent, EquipeFormComponent, FotoComponent],
+    declarations: [AreaComponent, AreaFormComponent,EquipeComponent, EquipeFormComponent, FotoComponent, AreaFormPtComponent],
     imports: [SharedModule, RouterModule.forChild( ROUTES )]
 })
 export class AreaRoutes{}
