@@ -81,11 +81,15 @@ export class EquipeFormComponent implements OnInit {
 
 	salvar(){
 		delete this.formCad.value.id
-		if( this.photoImg.includes('http') || this.formCad.value.photo == '' ){
+		if( this.photoImg ){
+			if( this.photoImg.includes('http') || this.formCad.value.photo == '' ){
+				delete this.formCad.value.photo
+			}
+		}else{
 			delete this.formCad.value.photo
 		}
 		if( this.id == 0 ){
-			this.novo( this.formCad.value )
+			this.novo(  )
 		}else{
 			this.update()
 		}
@@ -99,9 +103,9 @@ export class EquipeFormComponent implements OnInit {
 			})
 	}
 
-	novo(dados: any){
+	novo(){
 		this._equipeService
-			.save(dados)
+			.save(this.formCad.value)
 			.subscribe((response: any) => {
 				this.retorno()
 			})
