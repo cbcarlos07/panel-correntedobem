@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { SharedModule } from "src/app/shared/shared.module";
+import { ArrecadacaoFormComponent } from "./arrecadacao-form/arrecadacao-form.component";
 import { ArrecadacaoComponent } from "./arrecadacao.component";
 
 const ROUTES: Routes = [
@@ -8,7 +9,7 @@ const ROUTES: Routes = [
 ]
 
 @NgModule({
-    declarations: [ArrecadacaoComponent],
+    declarations: [ArrecadacaoComponent, ArrecadacaoFormComponent],
     imports: [SharedModule, RouterModule.forChild( ROUTES )]
 })
 

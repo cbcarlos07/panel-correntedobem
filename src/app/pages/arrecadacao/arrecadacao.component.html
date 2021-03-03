@@ -11,11 +11,58 @@
 
                 <div class="box-body">
                     <div class="col-md-6">
+
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#pt">Português</a></li>
+                            <li><a data-toggle="tab" href="#es">Español</a></li>
+                            <li><a data-toggle="tab" href="#en">English</a></li>                        
+                        </ul>
     
-                        <app-input [showTip]="false">
-                            <label for="observacao">Descrição</label>
-                            <textarea class="form-control" formControlName="description" rows="10"></textarea>
-                        </app-input>
+                        <div class="tab-content">
+                            <div id="pt" class="tab-pane fade in active">
+                                <app-arrecadacao-form *ngIf="arrecadacao"
+                                    [titleStr]="arrecadacao.title"
+                                    [descriptionStr]="arrecadacao.description"
+                                    (title)="setTitle($event)"
+                                    (description)="setDescription($event)"
+                                    (subtitleValue)="setSubTitleValue($event)"
+                                    (subtitleSpent)="setSubTitleSpent($event)">
+
+                                </app-arrecadacao-form>
+                            </div>
+                            <div id="es" class="tab-pane">
+                                <app-arrecadacao-form *ngIf="arrecadacao"
+                                    [titleStr]="arrecadacao.title_es"
+                                    [descriptionStr]="arrecadacao.description_es"
+                                    (title)="setTitleEs($event)"
+                                    (description)="setDescriptionEs($event)"
+                                    titleLabel="Título"
+                                    descriptionLabel="Descripción"
+                                    subtitleValueLabel="Título recopilado"
+                                    subtitleSpentLabel="Título de gastos"
+                                    (subtitleValue)="setSubTitleValueEs($event)"
+                                    (subtitleSpent)="setSubTitleSpentEs($event)">
+
+                                </app-arrecadacao-form>
+                            </div>
+                            <div id="en" class="tab-pane">
+                                <app-arrecadacao-form *ngIf="arrecadacao"
+                                    [titleStr]="arrecadacao.title_en"
+                                    [descriptionStr]="arrecadacao.description_en"
+                                    (title)="setTitleEn($event)"
+                                    (description)="setDescriptionEn($event)"
+                                    titleLabel="Title"
+                                    descriptionLabel="Description"
+                                    subtitleValueLabel="Collection caption"
+                                    subtitleSpentLabel="Expense caption"
+                                    (subtitleValue)="setSubTitleValueEn($event)"
+                                    (subtitleSpent)="setSubTitleSpentEn($event)">
+
+                                </app-arrecadacao-form>>
+                            </div>
+                        </div>    
+    
+                        
     
                         <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
                             <label for="minimo">Valor Arrecadado</label>

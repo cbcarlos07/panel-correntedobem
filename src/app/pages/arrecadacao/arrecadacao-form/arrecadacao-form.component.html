@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form [formGroup]="formCad">
+            <app-input [showTip]="false">
+                <label for="observacao">{{ titleLabel }}</label>
+                <input class="form-control" formControlName="title" (keyup)="enviarTitulo()">
+            </app-input>
+            <app-input [showTip]="false">
+                <label for="observacao">{{ descriptionLabel }}</label>
+                <textarea class="form-control" formControlName="description" rows="10" (keyup)="enviarDescricao()"></textarea>
+            </app-input>
+            <div class="col-md-6">
+                <app-input [showTip]="false">
+                    <label for="observacao">{{ subtitleValueLabel }}</label>
+                    <input class="form-control" formControlName="subtitle_value" (keyup)="enviarLegendaValor()" />
+                </app-input>
+            </div>
+            <div class="col-md-6">
+                <app-input [showTip]="false">
+                    <label for="observacao">{{ subtitleSpentLabel }}</label>
+                    <input class="form-control" formControlName="subtitle_spent" (keyup)="enviarDespesa()" />
+                </app-input>
+            </div>
+        </form>
+
+    </div>
+</div>
