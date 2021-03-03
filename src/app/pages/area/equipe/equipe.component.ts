@@ -37,7 +37,7 @@ export class EquipeComponent implements OnInit {
 	perguntaRemover( parametro: any ){
 		Swal.fire({
 			title: 'Atenção!',
-			text: `Deseja realmente remover ${parametro.title}`,
+			text: `Deseja realmente remover ${parametro.name}`,
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
