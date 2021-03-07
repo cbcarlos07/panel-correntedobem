@@ -61,16 +61,25 @@ export class AreaFormComponent implements OnInit {
 			.getById( this.id )
 			.subscribe((response: any)=>{
 				this.area = response
+				this.area.description = response.description.replace(regex,'\n')
+				this.area.description_es = response.description_es.replace(regex,'\n')
+				this.area.description_en = response.description_en.replace(regex,'\n')
 				var regex = /<br\s*[\/]?>/gi;
 				this.formCad.controls.title.setValue( response.title )
+				this.formCad.controls.title_es.setValue( response.title_es )
+				this.formCad.controls.title_en.setValue( response.title_en )
 				this.formCad.controls.order_area.setValue( response.order_area )
 				this.formCad.controls.url.setValue( response.url )
 				this.formCad.controls.description.setValue( response.description.replace(regex,'\n') )
+				this.formCad.controls.description_es.setValue( response.description_es.replace(regex,'\n') )
+				this.formCad.controls.description_en.setValue( response.description_en.replace(regex,'\n') )
 				let index = this.items.findIndex( f => f.id == response.parent_id )
 				this.formCad.controls.parent_id.setValue( this.items[ index ].id )
 				if(response.logo)  this.imgImage = `${environment.host}/foto/${response.logo}`
 				if(response.icon)  this.imgIcon = `${environment.host}/foto/${response.icon}`
 				this.formCad.controls.short_text.setValue( response.short_text )
+				this.formCad.controls.short_text_es.setValue( response.short_text_es )
+				this.formCad.controls.short_text_en.setValue( response.short_text_en )
 			})
 	}
 
@@ -115,6 +124,8 @@ export class AreaFormComponent implements OnInit {
 			delete this.formCad.value.icon
 		}
 		this.formCad.value.description = this.formCad.value.description.replace(/\r?\n/g, '<br />')
+		this.formCad.value.description_es = this.formCad.value.description_es.replace(/\r?\n/g, '<br />')
+		this.formCad.value.description_en = this.formCad.value.description_en.replace(/\r?\n/g, '<br />')
 		if( this.id == 0 ){
 			this.novo()
 		}else{

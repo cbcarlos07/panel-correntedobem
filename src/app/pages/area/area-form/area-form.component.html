@@ -30,7 +30,10 @@
                                 [descriptionStr]="area.description" 
                                 [short_textStr]="area.short_text"
                                 [logoStr]="area.logo"
-                                (title)="setTitle($event)">
+                                (title)="setTitle($event)"
+                                (description)="setDescription($event)"
+                                (short_text)="setShortText($event)"
+                                (logo)="setLogo($event)">
                             </app-area-form-pt>
                         </div>
                         <div id="es" class="tab-pane fade">
@@ -39,11 +42,14 @@
                                 [descriptionStr]="area.description_es" 
                                 [short_textStr]="area.short_text_es"
                                 [logoStr]="area.logo_es"
-                                (title)="setTitleEs($event)"
                                 titleLabel="Título "
                                 descriptionLabel="Descripción"
                                 shortTextLabel="Texto corto"
-                                >
+                                (title)="setTitleEs($event)"
+                                (description)="setDescriptionEs($event)"
+                                (short_text)="setShortTextEs($event)"
+                                (logo)="setLogoEs($event)">
+                                
                             </app-area-form-pt>
                         </div>
                         <div id="en" class="tab-pane fade">
@@ -52,11 +58,13 @@
                                 [descriptionStr]="area.description_en" 
                                 [short_textStr]="area.short_text_en"
                                 [logoStr]="area.logo_en"
-                                (title)="setTitleEn($event)"
                                 titleLabel="Title"
                                 descriptionLabel="Description"
                                 shortTextLabel="Short text"
-                            >
+                                (title)="setTitleEn($event)"
+                                (description)="setDescriptionEn($event)"
+                                (short_text)="setShortTextEn($event)"
+                                (logo)="setLogoEn($event)">
                             
                             </app-area-form-pt>
                                
