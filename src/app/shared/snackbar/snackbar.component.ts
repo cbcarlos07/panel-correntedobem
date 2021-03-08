@@ -36,8 +36,7 @@ export class SnackbarComponent implements OnInit {
 		this._notificationService
 		.notifier
 		.pipe(
-			tap( (obj: any) => {
-				console.log(obj);
+			tap( (obj: any) => {				
 				
 				this.tipAlert = obj.status == true ? 'alert-success' : 'alert-danger'
 				this.message  = obj.message
