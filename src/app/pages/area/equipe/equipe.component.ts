@@ -1,8 +1,10 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AreaService } from 'src/app/service/area.service';
 import { EquipeService } from 'src/app/service/equipe.service';
 import  Swal from 'sweetalert2';
+import { Area } from '../area-form/area.model';
 @Component({
 	selector: 'app-equipe',
 	templateUrl: './equipe.component.html',
@@ -11,14 +13,19 @@ import  Swal from 'sweetalert2';
 export class EquipeComponent implements OnInit {
 	items = []
 	id = 0
+	area: Area
 	constructor(private _equipeService: EquipeService,
 				private _activatedRoute: ActivatedRoute,
-				private _location: Location
+				private _location: Location,
+				private _areaService: AreaService
 		) { }
 	
 	ngOnInit() {
 		this.id = this._activatedRoute.snapshot.params['id'] || 0
 		this.getEquipe()
+		setTimeout(() => {
+			this.getArea()
+		}, 200);
 	}
 
 	getEquipe(){
@@ -26,6 +33,14 @@ export class EquipeComponent implements OnInit {
 			.getArea( this.id )
 			.subscribe((response: any)=>{
 				this.items = response
+			})
+	}
+
+	getArea(){
+		this._areaService
+			.getById( this.id )
+			.subscribe((_area: Area)=>{
+				this.area = _area
 			})
 	}
 

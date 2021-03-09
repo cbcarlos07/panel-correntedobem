@@ -25,7 +25,7 @@
 
                     <div class="tab-content">
                         <div id="pt" class="tab-pane fade in active">
-                            <app-area-form-pt *ngIf="area" 
+                            <app-area-form-pt *ngIf="area; else addPt"  
                                 [titleStr]="area.title" 
                                 [descriptionStr]="area.description" 
                                 [short_textStr]="area.short_text"
@@ -35,9 +35,19 @@
                                 (short_text)="setShortText($event)"
                                 (logo)="setLogo($event)">
                             </app-area-form-pt>
+
+                            <ng-template #addPt >
+                                <app-area-form-pt 
+                                    (title)="setTitle($event)"
+                                    (description)="setDescription($event)"
+                                    (short_text)="setShortText($event)"
+                                    (logo)="setLogo($event)">
+                                </app-area-form-pt>
+                            </ng-template>
+                            
                         </div>
                         <div id="es" class="tab-pane fade">
-                            <app-area-form-pt *ngIf="area" 
+                            <app-area-form-pt *ngIf="area; else addEs" 
                                 [titleStr]="area.title_es" 
                                 [descriptionStr]="area.description_es" 
                                 [short_textStr]="area.short_text_es"
@@ -49,11 +59,21 @@
                                 (description)="setDescriptionEs($event)"
                                 (short_text)="setShortTextEs($event)"
                                 (logo)="setLogoEs($event)">
-                                
                             </app-area-form-pt>
+                            <ng-template #addEs >
+                                <app-area-form-pt *ngIf="area"                                 
+                                    titleLabel="Título "
+                                    descriptionLabel="Descripción"
+                                    shortTextLabel="Texto corto"
+                                    (title)="setTitleEs($event)"
+                                    (description)="setDescriptionEs($event)"
+                                    (short_text)="setShortTextEs($event)"
+                                    (logo)="setLogoEs($event)">
+                            </app-area-form-pt>
+                            </ng-template>
                         </div>
                         <div id="en" class="tab-pane fade">
-                            <app-area-form-pt *ngIf="area" 
+                            <app-area-form-pt *ngIf="area; else addEn" 
                                 [titleStr]="area.title_en" 
                                 [descriptionStr]="area.description_en" 
                                 [short_textStr]="area.short_text_en"
@@ -65,8 +85,19 @@
                                 (description)="setDescriptionEn($event)"
                                 (short_text)="setShortTextEn($event)"
                                 (logo)="setLogoEn($event)">
-                            
                             </app-area-form-pt>
+                            <ng-template #addEn> 
+                                <app-area-form-pt 
+                                
+                                    titleLabel="Title"
+                                    descriptionLabel="Description"
+                                    shortTextLabel="Short text"
+                                    (title)="setTitleEn($event)"
+                                    (description)="setDescriptionEn($event)"
+                                    (short_text)="setShortTextEn($event)"
+                                    (logo)="setLogoEn($event)">
+                                </app-area-form-pt>
+                            </ng-template>
                                
                         </div>
                     </div>   

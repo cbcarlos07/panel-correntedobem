@@ -62,7 +62,6 @@ export class EquipeFormComponent implements OnInit {
 		this._equipeService
 			.getById(this.id)
 			.subscribe((response: any)=>{
-				
 				this.formCad.controls.name.setValue( response.name )
 				this.formCad.controls.order_item.setValue( response.order_item )
 				let index = this.items.findIndex( (i: any) => i.id == response.parent_id)
@@ -129,6 +128,19 @@ export class EquipeFormComponent implements OnInit {
 			this.photoImg = `data:image/png;base64,${retorno}`
 			this.formCad.controls.photo.setValue( this.photoImg )
 		}
+	}
+
+	removerFoto(){
+		this._equipeService
+			.removerFoto( this.id )
+			.subscribe(()=>{
+				let obj = {
+					message: 'Foto removida',
+					status: true
+				}
+				this._notificationService.notify(obj)
+				this.photoImg = ''
+			})
 	}
 	
 }

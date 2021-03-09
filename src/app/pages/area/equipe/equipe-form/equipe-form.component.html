@@ -52,6 +52,9 @@
                     <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
                         <label for="descricao">Legenda da foto</label>
                         <input class="form-control" placeholder="" formControlName="subtitle" >
+                        <span class="text-danger">
+                            <a  (click)="removerFoto()" [routerLink]="[]" style="text-decoration: none;color: red;">Remover foto</a>
+                        </span>
                     </app-input>
 
                 </div>

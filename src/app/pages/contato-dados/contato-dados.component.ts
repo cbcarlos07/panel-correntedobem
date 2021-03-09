@@ -19,7 +19,7 @@ export class ContatoDadosComponent implements OnInit {
 	ngOnInit() {
 		this.formCad = new FormGroup({
 			email: new FormControl('',{validators: [Validators.required]}),
-			telefone: new FormControl('',{validators: [Validators.required]}),
+			telefone: new FormControl(''),
 			endereco: new FormControl('',{validators: [Validators.required]}),
 		})
 

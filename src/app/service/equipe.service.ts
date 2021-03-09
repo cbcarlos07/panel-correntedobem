@@ -27,6 +27,10 @@ export class EquipeService {
 		return this._http.put(`${this.webService}/${id}`, dados)
 	}
 
+	removerFoto(id: number){
+		return this._http.get(`${this.webService}/remover-foto/${id}`)
+	}
+
 	delete(id: number){
 		return this._http.delete(`${this.webService}/${id}`)
 	}
