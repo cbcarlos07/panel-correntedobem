@@ -61,15 +61,12 @@
                                 (logo)="setLogoEs($event)">
                             </app-area-form-pt>
                             <ng-template #addEs >
-                                <app-area-form-pt *ngIf="area"                                 
-                                    titleLabel="Título "
-                                    descriptionLabel="Descripción"
-                                    shortTextLabel="Texto corto"
+                                <app-area-form-pt                                     
                                     (title)="setTitleEs($event)"
                                     (description)="setDescriptionEs($event)"
                                     (short_text)="setShortTextEs($event)"
                                     (logo)="setLogoEs($event)">
-                            </app-area-form-pt>
+                                </app-area-form-pt>
                             </ng-template>
                         </div>
                         <div id="en" class="tab-pane fade">
